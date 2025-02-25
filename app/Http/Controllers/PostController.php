@@ -58,7 +58,7 @@ class PostController extends Controller
         $post->belongs_to = Auth::id();
         $post->save();
 
-        return view('home');
+        return $this->showPosts();
 
     }
 
