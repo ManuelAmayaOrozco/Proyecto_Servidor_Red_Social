@@ -8,3 +8,5 @@ Route::get('/register', [PostController::class, 'showRegisterPost'])->name('post
 Route::post('/register', [PostController::class, 'doRegisterPost'])->name('post.doRegisterPost');
 
 Route::put('/like/{id}', [PostController::class, 'updateLike'])->name('post.like');
+
+Route::delete('/delete/{id}', [PostController::class, 'deletePost'])->name('post.delete');

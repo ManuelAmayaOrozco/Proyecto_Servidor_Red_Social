@@ -18,6 +18,13 @@
                 <button type="submit" class="btn btn-like">Like</button>
             </form>
 
+            @if ($post->belongs_to == $current_user_id)
+            <form action="{{ route('post.delete', ['id' => $post->id]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Eliminar</button>
+            </form>
+            @endif
         </div>
 
     @endforeach

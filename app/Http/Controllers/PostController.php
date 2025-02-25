@@ -15,7 +15,8 @@ class PostController extends Controller
 
     public function showPosts() {
         $posts = DB::table('posts')->get();
-        return view('home', compact('posts'));
+        $current_user_id = Auth::id();
+        return view('home', compact('posts', 'current_user_id'));
     }
 
     public function showRegisterPost() {
@@ -27,6 +28,29 @@ class PostController extends Controller
         $post = Post::find($id);
 
         $post->increment('n_likes');
+
+        return redirect()->back();
+
+    }
+
+    public function deletePost($id) {
+
+        $validator = Validator::make(
+            ['id' => $id],
+            [
+                'id' => 'required|exists:App\Models\Post,id'
+            ]
+        );
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $post = Post::find($id);
+        $post->delete();
+
+        $user = User::find($post->assigned_to);
+        $chores = $user->posts()->get();
 
         return redirect()->back();
 
