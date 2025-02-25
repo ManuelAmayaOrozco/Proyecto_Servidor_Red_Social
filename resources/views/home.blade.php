@@ -12,6 +12,9 @@
     <!-- HEADER -->
     @include('partials.header')
 
+    <!-- POSTS -->
+    @include('partials.posts')
+
     <!-- FOOTER -->
     @include('partials.footer')
 </body>

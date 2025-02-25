@@ -1,10 +1,9 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [PostController::class, 'showPosts'])->name('post.showPosts');
 
 
 Route::prefix('users')->group(base_path('routes/users/users.php'));
