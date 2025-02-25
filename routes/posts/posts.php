@@ -4,9 +4,13 @@ use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 // RUTA PARA ENRUTAR /user/
-Route::get('/register', [PostController::class, 'showRegisterPost'])->name('post.showRegisterPost');
-Route::post('/register', [PostController::class, 'doRegisterPost'])->name('post.doRegisterPost');
+Route::middleware(['auth'])->group(function(){
 
-Route::put('/like/{id}', [PostController::class, 'updateLike'])->name('post.like');
+    Route::get('/register', [PostController::class, 'showRegisterPost'])->name('post.showRegisterPost');
+    Route::post('/register', [PostController::class, 'doRegisterPost'])->name('post.doRegisterPost');
 
-Route::delete('/delete/{id}', [PostController::class, 'deletePost'])->name('post.delete');
+    Route::put('/like/{id}', [PostController::class, 'updateLike'])->name('post.like');
+
+    Route::delete('/delete/{id}', [PostController::class, 'deletePost'])->name('post.delete');
+
+});
