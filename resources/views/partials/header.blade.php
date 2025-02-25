@@ -4,7 +4,7 @@
     </div>
     <nav class="header__navigation">
         <a href="{{ route('login') }}" class="navigation__a">
-            LOGIN
+            {{ Auth::check() ? 'PROFILE' : 'LOGIN' }}
         </a>
         <a href="{{ route('user.showRegister') }}" class="navigation__a">
             REGISTER
