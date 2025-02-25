@@ -51,4 +51,5 @@ class User extends Authenticatable
         return $this->hasMany(Chore::class, 'assigned_to', 'id');
 
     }
+
 }

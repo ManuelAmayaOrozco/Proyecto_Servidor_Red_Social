@@ -10,6 +10,14 @@
             <p class="post-text">{{ $post->description }}</p>
             </div>
 
+            <p class="likes-text">Likes: {{ $post->n_likes }}</p>
+
+            <form action="{{ route('post.like', ['id' => $post->id]) }}" method="POST">
+                @csrf
+                @method('PUT')
+                <button type="submit" class="btn btn-like">Like</button>
+            </form>
+
         </div>
 
     @endforeach

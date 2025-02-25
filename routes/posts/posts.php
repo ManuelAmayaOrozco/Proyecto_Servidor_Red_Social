@@ -5,4 +5,6 @@ use Illuminate\Support\Facades\Route;
 
 // RUTA PARA ENRUTAR /user/
 Route::get('/register', [PostController::class, 'showRegisterPost'])->name('post.showRegisterPost');
-Route::post('/regsiter', [PostController::class, 'doRegisterPost'])->name('post.doRegisterPost');
+Route::post('/register', [PostController::class, 'doRegisterPost'])->name('post.doRegisterPost');
+
+Route::put('/like/{id}', [PostController::class, 'updateLike'])->name('post.like');

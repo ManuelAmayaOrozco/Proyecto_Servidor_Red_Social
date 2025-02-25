@@ -22,6 +22,16 @@ class PostController extends Controller
         return view('user_views.insertPosts');
     }
 
+    public function updateLike($id) {
+    
+        $post = Post::find($id);
+
+        $post->increment('n_likes');
+
+        return redirect()->back();
+
+    }
+
     public function doRegisterPost(Request $request) {
     
         // VALIDAR DATOS DE ENTRADA.
@@ -45,7 +55,7 @@ class PostController extends Controller
         $user = Auth::user();
         if(!$user) {
             $validator->errors()->add('credentials', 'This user does not exist, use a different ID.');
-            return redirect()->route('user_views.insertChores')->withErrors($validator)->withInput();
+            return redirect()->route('post.showRegisterPost')->withErrors($validator)->withInput();
         }
 
         // SI LOS DATOS SON VÁLIDOS (SI EL REGISTRO SE HA REALIZADO CORRECTAMENTE) CARGAR LA VIEW
