@@ -9,5 +9,8 @@
         <a href="{{ route('user.showRegister') }}" class="navigation__a">
             REGISTER
         </a>
+        <a href="{{ route('post.showRegisterPost') }}" class="navigation__a">
+            POST
+        </a>
     </nav>
 </header>
