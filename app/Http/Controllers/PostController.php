@@ -29,7 +29,7 @@ class PostController extends Controller
 
         $post->increment('n_likes');
 
-        return redirect()->route('home');
+        return redirect()->back();
 
     }
 
@@ -49,7 +49,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        return redirect()->route('home');
+        return redirect()->back();
 
     }
 

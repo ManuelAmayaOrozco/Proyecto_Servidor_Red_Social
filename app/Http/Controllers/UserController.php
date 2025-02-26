@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\User;
+use App\Models\Post;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
@@ -128,6 +130,29 @@ class UserController extends Controller
         Auth::logout();
 
         return redirect()->route('login');
+
+    }
+
+    public function delete($id) {
+
+        $validator = Validator::make(
+            ['id' => $id],
+            [
+                'id' => 'required|exists:App\Models\User,id'
+            ]
+        );
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        $posts = Post::where("belongs_to", $id);
+        $posts->delete();
+
+        $user = User::find($id);
+        $user->delete();
+
+        return redirect()->route('home');
 
     }
 

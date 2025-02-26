@@ -13,6 +13,12 @@
             <button type="submit" class="btn btn-danger">Logout</button>
         </form>
 
+        <form action="{{ route('user.delete', ['id' => $current_user->id]) }}" method="POST">
+            @csrf
+            @method('DELETE')
+            <button type="submit" class="btn btn-danger">Eliminar Usuario</button>
+        </form>
+
     </div>
 
 </main>
