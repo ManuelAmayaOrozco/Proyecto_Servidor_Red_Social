@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Enums\Status;
 use App\Models\Post;
 use App\Models\User;
+use App\Models\Comment;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -24,7 +25,7 @@ class PostController extends Controller
     public function showFullPost($id) {
         $post = null;
 
-        $posts = DB::table('posts')->get();
+        $posts = Post::all();
 
         foreach ($posts as $posto) {
 
@@ -50,9 +51,13 @@ class PostController extends Controller
 
         }
 
+        //$comments = DB::table('comments')->where("post_id", $id);
+        $comments = $post->comments()->get();
+
+
         $current_user_id = Auth::id();
 
-        return view('user_views.fullPost', compact('post', 'post_user', 'current_user_id'));
+        return view('user_views.fullPost', compact('post', 'post_user', 'comments', 'users', 'current_user_id'));
     }
 
     public function showRegisterPost() {

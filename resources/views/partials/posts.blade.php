@@ -18,6 +18,7 @@
                                 </h3>
             <div class="post-separator-box">
             <p class="post-text">{{ $post->description }}</p>
+            <p class="post-date">{{ $post->publish_date }}</p>
             </div>
 
             <p class="likes-text">Likes: {{ $post->n_likes }}</p>
