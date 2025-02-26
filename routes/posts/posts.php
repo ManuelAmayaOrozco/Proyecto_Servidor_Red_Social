@@ -14,3 +14,5 @@ Route::middleware(['auth'])->group(function(){
     Route::delete('/delete/{id}', [PostController::class, 'deletePost'])->name('post.delete');
 
 });
+
+Route::get('/fullPost/{id}', [PostController::class, 'showFullPost'])->name('post.showFullPost');

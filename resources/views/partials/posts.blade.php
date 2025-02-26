@@ -3,9 +3,19 @@
 
     @foreach($posts as $post)
 
-        <div class="post-box">
+        <div class="post-box" onclick="location.href=`{{ route('post.showFullPost', ['id' => $post->id]) }}`">
 
             <h2 class="post-title">{{ $post->title }}</h2>
+            <h3 class="post-user">@foreach ($users as $user)
+
+                                    @if($user->id == $post->belongs_to) 
+
+                                        {{ $user->name }} 
+
+                                    @endif 
+
+                                  @endforeach
+                                </h3>
             <div class="post-separator-box">
             <p class="post-text">{{ $post->description }}</p>
             </div>

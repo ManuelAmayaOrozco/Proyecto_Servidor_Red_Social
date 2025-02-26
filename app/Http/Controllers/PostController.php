@@ -15,8 +15,44 @@ class PostController extends Controller
 
     public function showPosts() {
         $posts = DB::table('posts')->get();
+        $users = DB::table('users')->get();
+
         $current_user_id = Auth::id();
-        return view('home', compact('posts', 'current_user_id'));
+        return view('home', compact('posts', 'users', 'current_user_id'));
+    }
+
+    public function showFullPost($id) {
+        $post = null;
+
+        $posts = DB::table('posts')->get();
+
+        foreach ($posts as $posto) {
+
+            if ($posto->id == $id) {
+
+                $post = $posto;
+
+            }
+
+        }
+
+        $post_user = null;
+
+        $users = DB::table('users')->get();
+
+        foreach ($users as $user) {
+
+            if ($user->id == $post->belongs_to) {
+
+                $post_user = $user->name;
+
+            }
+
+        }
+
+        $current_user_id = Auth::id();
+
+        return view('user_views.fullPost', compact('post', 'post_user', 'current_user_id'));
     }
 
     public function showRegisterPost() {
