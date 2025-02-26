@@ -56,8 +56,8 @@ class UserController extends Controller
         if (Auth::attempt($credentials)) { // Auth::attempt crea una session en la BD con las credenciales
             $request->session()->regenerate();
 
-            $chores = $user->chores()->get();
-            return view('user_views.index', compact('chores', 'user')); // CARGA LA VIEW PRINCIPAL CON LA INFO DEL USUARIO
+            return redirect()->route('home');
+
         }
         
     }
@@ -106,4 +106,29 @@ class UserController extends Controller
 
         return view('user_views.login'); // CARGA LA VIEW DE LOGIN PARA PODER REALIZAR LOGIN
     }
+
+    public function showProfile() {
+        $current_user = Auth::user();
+        return view('user_views.profile', compact('current_user'));
+    }
+
+    public function logout($id) {
+
+        $validator = Validator::make(
+            ['id' => $id],
+            [
+                'id' => 'required|exists:App\Models\User,id'
+            ]
+        );
+
+        if ($validator->fails()) {
+            return redirect()->back()->withErrors($validator);
+        }
+
+        Auth::logout();
+
+        return redirect()->route('login');
+
+    }
+
 }

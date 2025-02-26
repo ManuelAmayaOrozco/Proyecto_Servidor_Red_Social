@@ -10,7 +10,7 @@
 }
 
 .header__div_logo {
-
+    cursor: pointer;
 }
 
 .header__navigation {

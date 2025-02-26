@@ -9,3 +9,11 @@ Route::get('/register', [UserController::class, 'showRegister'])->name('user.sho
 
 Route::post('/login', [UserController::class, 'doLogin'])->name('user.doLogin');
 Route::post('/register', [UserController::class, 'doRegister'])->name('user.doRegister');
+
+Route::middleware(['auth'])->group(function(){
+
+    Route::get('/profile', [UserController::class, 'showProfile'])->name('user.showProfile');
+
+    Route::delete('/logout/{id}', [UserController::class, 'logout'])->name('user.logout');
+
+});
