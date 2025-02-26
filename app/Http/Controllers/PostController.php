@@ -87,6 +87,9 @@ class PostController extends Controller
             return redirect()->back()->withErrors($validator);
         }
 
+        $comments = Comment::where("post_id", $id);
+        $comments->delete();
+
         $post = Post::find($id);
         $post->delete();
 

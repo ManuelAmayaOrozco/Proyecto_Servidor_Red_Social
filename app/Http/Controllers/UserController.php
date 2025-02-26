@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use App\Models\Post;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -148,6 +149,9 @@ class UserController extends Controller
 
         $posts = Post::where("belongs_to", $id);
         $posts->delete();
+
+        $comments = Comment::where("user_id", $id);
+        $comments->delete();
 
         $user = User::find($id);
         $user->delete();

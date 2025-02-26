@@ -41,6 +41,7 @@
     padding: 1.5em;
     border-radius: 8px; /* Bordes redondeados para un aspecto más moderno */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Agrega una sombra sutil */
+    cursor: pointer;
 }
 
 /* Título del post */
