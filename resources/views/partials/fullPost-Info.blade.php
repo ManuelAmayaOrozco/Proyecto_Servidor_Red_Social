@@ -11,6 +11,7 @@
         </div>
 
         <p class="likes-text">Likes: {{ $post->n_likes }}</p>
+        <p class="likes-text">Comentarios: {{ count($comments) }}</p>
 
         <form action="{{ route('post.like', ['id' => $post->id]) }}" method="POST">
             @csrf
