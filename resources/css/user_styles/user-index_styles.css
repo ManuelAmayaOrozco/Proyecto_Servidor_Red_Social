@@ -188,3 +188,17 @@
 .comment-box .btn-comment {
     margin-top: 0.5em;
 }
+
+/* Estilo para la sección de la foto del perfil */
+.profile-picture-display {
+    margin-bottom: 1.5em;
+}
+
+/* Estilo para la imagen del perfil */
+.profile-picture {
+    width: 250px; /* Tamaño moderado para la imagen */
+    height: 250px;
+    border-radius: 50%; /* Imagen redonda */
+    object-fit: cover; /* Ajuste adecuado de la imagen */
+    border: 2px solid #fff; /* Borde blanco para resaltar la imagen */
+}

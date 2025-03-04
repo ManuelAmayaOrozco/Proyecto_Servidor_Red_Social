@@ -5,6 +5,12 @@
 
         <h1 class="username__text">{{ $current_user->name }}</h1class>
 
+        @if ($current_user->photo)
+        <div class="profile-picture-display">
+            <img src="{{ asset('storage/' . $current_user->photo) }}" class="profile-picture">
+        </div>
+        @endif
+
         <p class="userdata__text">Email: {{ $current_user->email }}</p>
 
         <form action="{{ route('user.logout', ['id' => $current_user->id]) }}" method="POST">

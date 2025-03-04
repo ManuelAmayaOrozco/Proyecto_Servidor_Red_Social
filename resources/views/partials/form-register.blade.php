@@ -1,6 +1,6 @@
 @vite('resources/css/user_styles/register_styles.css')
 <main class="main__register">
-    <form class="register__register_form {{ $errors->any() ? 'register__register_form-error' : '' }}" action="{{ route('user.doRegister') }}" method="post">
+    <form class="register__register_form {{ $errors->any() ? 'register__register_form-error' : '' }}" action="{{ route('user.doRegister') }}" method="post" enctype="multipart/form-data">
         @csrf
         <div class="form-group">
             <label for="name">Name:</label>
@@ -21,6 +21,10 @@
             <label for="repeat_password">Repeat password</label>
             <input type="password" class="form-control" id="input_repeat_password" name="password_repeat" placeholder="Repeat password">
             @error('repeat_password') <small class="register_form__error">{{ $message }}</small> @enderror
+        </div>
+        <div class="form-group">
+            <label for="photo">Profile Picture</label>
+            <input type="file" class="form-control" id="input_photo" name="photo" accept="image/*">
         </div>
         <div class="form-group d-flex justify-content-center gap-3">
             <button type="submit" class="btn btn-primary">Submit</button>

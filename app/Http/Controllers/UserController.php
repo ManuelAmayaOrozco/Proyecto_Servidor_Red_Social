@@ -94,6 +94,12 @@ class UserController extends Controller
             ]
         );
 
+        if ($request->hasFile('photo')) {
+            $photo = $request['photo']->store('profiles');
+        } else {
+            $photo = null;
+        }
+
         // SI LOS DATOS SON INVÁLIDOS, DEVOLVER A LA PÁGINA ANTERIOR E IMPRIMIR LOS ERRORES DE VALIDACIÓN
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
@@ -105,6 +111,7 @@ class UserController extends Controller
         $user->name = $datosUsuario['name'];
         $user->email = $datosUsuario['email'];
         $user->password = $datosUsuario['password'];
+        $user->photo = $photo;
         $user->save();
 
         return view('user_views.login'); // CARGA LA VIEW DE LOGIN PARA PODER REALIZAR LOGIN
