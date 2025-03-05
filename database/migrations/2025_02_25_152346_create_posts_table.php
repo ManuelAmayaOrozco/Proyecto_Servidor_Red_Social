@@ -19,6 +19,7 @@ return new class extends Migration
             $table->integer('n_likes');
             $table->unsignedBigInteger('belongs_to');
             $table->foreign('belongs_to')->references('id')->on('users');
+            $table->string('photo', 255)->nullable();
             $table->timestamps();
         });
     }

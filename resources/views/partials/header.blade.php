@@ -6,11 +6,15 @@
         <a href="{{ Auth::check() ? route('user.showProfile') : route('login')  }}" class="navigation__a">
             {{ Auth::check() ? 'PROFILE' : 'LOGIN' }}
         </a>
-        <a href="{{ route('user.showRegister') }}" class="navigation__a">
-            REGISTER
-        </a>
+        @if(!Auth::check()) 
+            <a href="{{ route('user.showRegister') }}" class="navigation__a">
+                REGISTER
+            </a>
+        @endif
+        @if(Auth::check()) 
         <a href="{{ route('post.showRegisterPost') }}" class="navigation__a">
             POST
         </a>
+        @endif
     </nav>
 </header>

@@ -1,5 +1,5 @@
 .main__register {
-    background-color: #fdf0d5;
+    background-color: #eed5fd;
     min-height: 80vh;
     display: flex;
     align-items: center;
@@ -9,9 +9,9 @@
 
     width: 20%;
     aspect-ratio: 5/1;
-    background-color: #fb8500;
+    background-color: #7500fb;
     border-radius: 10%;
-    border: 2px solid #ffb703;
+    border: 2px solid #b803ff;
     padding: 2em;
     row-gap: 2em;
 
@@ -22,7 +22,7 @@
 }
 
 .register__register_form-error {
-    border: 2px solid #780000;
+    border: 2px solid #78002e;
 }
 
 .register_form__error {

@@ -76,7 +76,7 @@
 
 /* Estilo para el botón de Like */
 .btn-like {
-    background-color: #f56a00; /* Un color cálido para el botón de Like */
+    background-color: #f50087; /* Un color cálido para el botón de Like */
     color: white;
     padding: 0.2em 1.23em;
     border: none;
@@ -127,7 +127,7 @@
 
 /* Estilo para el botón de comentar */
 .btn-comment {
-    background-color: #3498db; /* Azul para el botón de comentar */
+    background-color: #4534db; /* Azul para el botón de comentar */
     color: white;
     padding: 0.5em 1.5em;
     border: none;
@@ -201,4 +201,17 @@
     border-radius: 50%; /* Imagen redonda */
     object-fit: cover; /* Ajuste adecuado de la imagen */
     border: 2px solid #fff; /* Borde blanco para resaltar la imagen */
+}
+
+/* Estilo para la imagen de la publicación */
+.post-picture-display {
+    margin-bottom: 1.5em;
+}
+
+.post-picture {
+    max-width: 1500px;
+    max-height: 500px;
+    border-radius: 8px;
+    object-fit: cover;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }

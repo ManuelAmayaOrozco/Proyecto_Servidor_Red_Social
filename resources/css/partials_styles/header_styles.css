@@ -1,7 +1,7 @@
 .body__header {
     min-height: 10vh;
     height: 10vh;
-    background-color: #003049;
+    background-color: #380049;
 
     display: flex;
     align-items: center;
@@ -25,7 +25,7 @@
 }
 
 .navigation__a {
-    background-color: #003049;
+    background-color: #340049;
     height: 100%;
     min-width: 5em;
     display: flex;
@@ -40,6 +40,6 @@
 }
 
 .navigation__a:hover {
-    background-color: #669bbc;
+    background-color: #9a66bc;
 }
 

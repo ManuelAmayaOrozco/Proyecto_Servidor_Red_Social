@@ -93,7 +93,7 @@ class PostController extends Controller
         $post = Post::find($id);
         $post->delete();
 
-        return redirect()->back();
+        return redirect()->route('home');
 
     }
 
@@ -104,13 +104,21 @@ class PostController extends Controller
             $request->all(),
             [
                 "title"=>"required",
-                "description"=> "required"
+                "description"=> "required",
+                "photo"=>"required"
             ],[
                 "title.required" => "The :attribute is required.",
-                "description.required" => "The :attribute is required."
+                "description.required" => "The :attribute is required.",
+                "photo.required" => "The :attribute is required."
             ]
         );
     
+        if ($request->hasFile('photo')) {
+            $photo = $request['photo']->store('posts');
+        } else {
+            $photo = null;
+        }
+
         // SI LOS DATOS SON INVÁLIDOS, DEVOLVER A LA PÁGINA ANTERIOR E IMPRIMIR LOS ERRORES DE VALIDACIÓN
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator);
@@ -131,6 +139,7 @@ class PostController extends Controller
         $post->publish_date = date('d-m-y h:i:s');
         $post->n_likes = 0;
         $post->belongs_to = Auth::id();
+        $post->photo = $photo;
         $post->save();
 
         return redirect()->route('home');

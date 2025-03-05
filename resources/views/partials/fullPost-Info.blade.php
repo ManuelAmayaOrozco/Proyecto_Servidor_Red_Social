@@ -6,6 +6,9 @@
         <h2 class="post-title">{{ $post->title }}</h2>
         <h3 class="post-user">{{ $post_user }}</h3>
         <div class="post-separator-box">
+        <div class="post-picture-display">
+            <img src="{{ asset('storage/' . $post->photo) }}" class="post-picture">
+        </div>
         <p class="post-text">{{ $post->description }}</p>
         <p class="post-date">{{ $post->publish_date }}</p>
         </div>
